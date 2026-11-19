@@ -34,6 +34,9 @@ import type {
 
 const hostedServerUrl = 'https://dsh.r2049.cn'
 
+/** Default device names Remote Web gives a browser, one per site language. */
+const remoteWebDefaultBrowserNames = new Set(['当前浏览器', 'Current browser', 'Navegador actual', '現在のブラウザー', '現在のブラウザ', 'Текущий браузер'])
+
 export function createRemoteWorkspaceAction(React: ClientReact, portal?: PortalRenderer) {
   const ServerNotice = createServerNotice(React)
   const HostPairingPanel = createHostPairingPanel(React)
@@ -1171,6 +1174,13 @@ export function createRemoteWorkspaceAction(React: ClientReact, portal?: PortalR
       deviceUpdateAvailable(selectedHost) ? t('updateAvailableTag') : undefined,
     ].filter(Boolean).join(' · ')
     const connectedClients = status?.host?.connectedClients ?? []
+    // Remote Web names each browser with its own default in the site's language at registration,
+    // so a phone browser can show up in Chinese in a Russian Harness. Custom names stay as they are.
+    const clientDisplayName = (client: { name: string; platform?: string }): string => {
+      const name = client.name.trim()
+      if (name === '') return t('unknownDevice')
+      return client.platform === 'web' && remoteWebDefaultBrowserNames.has(name) ? t('webBrowserDevice') : client.name
+    }
     const connectedCount = connectedClients.length
     const connectedCountLabel = t('connectedClientCount', { count: connectedCount })
     const connectedMenu = !needsAuthorization && status?.hostAuthorizationAvailable === true
@@ -1213,7 +1223,7 @@ export function createRemoteWorkspaceAction(React: ClientReact, portal?: PortalR
               },
                 React.createElement('span', null,
                   React.createElement('span', { className: 'dshRemoteHostNameLine' },
-                    React.createElement('strong', null, client.name.trim() === '' ? t('unknownDevice') : client.name),
+                    React.createElement('strong', null, clientDisplayName(client)),
                     null),
                   React.createElement('small', null, [
                     client.platform === undefined ? undefined : formatPlatform(client.platform),

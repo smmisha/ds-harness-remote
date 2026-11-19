@@ -2061,6 +2061,7 @@ If a code was sent, recover the original submission without changing it.`,
     currentConnectedDevices: "Currently connected devices",
     noConnectedClients: "No devices are currently connected to this Host.",
     unknownDevice: "Unknown device",
+    webBrowserDevice: "Browser",
     exitRemoteAccount: "Sign out",
     membershipPlans: "Membership plans",
     membershipPlansIntro: "Want more speed and power? Explore ",
@@ -2456,6 +2457,7 @@ If a code was sent, recover the original submission without changing it.`,
     currentConnectedDevices: "\u5F53\u524D\u8FDE\u63A5\u7684\u8BBE\u5907",
     noConnectedClients: "\u76EE\u524D\u6CA1\u6709\u8BBE\u5907\u8FDE\u63A5\u5230\u8FD9\u53F0\u4E3B\u673A\u3002",
     unknownDevice: "\u672A\u77E5\u8BBE\u5907",
+    webBrowserDevice: "\u6D4F\u89C8\u5668",
     exitRemoteAccount: "\u9000\u51FA\u8D26\u53F7",
     membershipPlans: "\u4F1A\u5458\u65B9\u6848",
     membershipPlansIntro: "\u66F4\u5FEB\u66F4\u5F3A\uFF1F\u8BF7\u67E5\u9605\u300C",
@@ -2850,6 +2852,7 @@ If a code was sent, recover the original submission without changing it.`,
     currentConnectedDevices: "\u041F\u043E\u0434\u043A\u043B\u044E\u0447\u0451\u043D\u043D\u044B\u0435 \u0443\u0441\u0442\u0440\u043E\u0439\u0441\u0442\u0432\u0430",
     noConnectedClients: "\u0421\u0435\u0439\u0447\u0430\u0441 \u043A \u044D\u0442\u043E\u043C\u0443 \u0445\u043E\u0441\u0442\u0443 \u043D\u0435 \u043F\u043E\u0434\u043A\u043B\u044E\u0447\u0435\u043D\u043E \u043D\u0438 \u043E\u0434\u043D\u043E\u0433\u043E \u0443\u0441\u0442\u0440\u043E\u0439\u0441\u0442\u0432\u0430.",
     unknownDevice: "\u041D\u0435\u0438\u0437\u0432\u0435\u0441\u0442\u043D\u043E\u0435 \u0443\u0441\u0442\u0440\u043E\u0439\u0441\u0442\u0432\u043E",
+    webBrowserDevice: "\u0411\u0440\u0430\u0443\u0437\u0435\u0440",
     exitRemoteAccount: "\u0412\u044B\u0439\u0442\u0438",
     membershipPlans: "\u0422\u0430\u0440\u0438\u0444\u044B \u043F\u043E\u0434\u043F\u0438\u0441\u043A\u0438",
     membershipPlansIntro: "\u0425\u043E\u0442\u0438\u0442\u0435 \u0431\u043E\u043B\u044C\u0448\u0435 \u0441\u043A\u043E\u0440\u043E\u0441\u0442\u0438 \u0438 \u0432\u043E\u0437\u043C\u043E\u0436\u043D\u043E\u0441\u0442\u0435\u0439? \u041F\u043E\u0441\u043C\u043E\u0442\u0440\u0438\u0442\u0435 \xAB",
@@ -3244,6 +3247,7 @@ If a code was sent, recover the original submission without changing it.`,
     currentConnectedDevices: "\u041F\u0456\u0434\u043A\u043B\u044E\u0447\u0435\u043D\u0456 \u0437\u0430\u0440\u0430\u0437 \u043F\u0440\u0438\u0441\u0442\u0440\u043E\u0457",
     noConnectedClients: "\u0417\u0430\u0440\u0430\u0437 \u0434\u043E \u0446\u044C\u043E\u0433\u043E \u0445\u043E\u0441\u0442\u0430 \u043D\u0435 \u043F\u0456\u0434\u043A\u043B\u044E\u0447\u0435\u043D\u043E \u0436\u043E\u0434\u043D\u043E\u0433\u043E \u043F\u0440\u0438\u0441\u0442\u0440\u043E\u044E.",
     unknownDevice: "\u041D\u0435\u0432\u0456\u0434\u043E\u043C\u0438\u0439 \u043F\u0440\u0438\u0441\u0442\u0440\u0456\u0439",
+    webBrowserDevice: "\u0411\u0440\u0430\u0443\u0437\u0435\u0440",
     exitRemoteAccount: "\u0412\u0438\u0439\u0442\u0438",
     membershipPlans: "\u041F\u043B\u0430\u043D\u0438 \u043F\u0456\u0434\u043F\u0438\u0441\u043A\u0438",
     membershipPlansIntro: "\u0425\u043E\u0447\u0435\u0442\u0435 \u0431\u0456\u043B\u044C\u0448\u0435 \u0448\u0432\u0438\u0434\u043A\u043E\u0441\u0442\u0456 \u0439 \u043C\u043E\u0436\u043B\u0438\u0432\u043E\u0441\u0442\u0435\u0439? \u041F\u0435\u0440\u0435\u0433\u043B\u044F\u043D\u044C\u0442\u0435 \xAB",
@@ -5414,7 +5418,7 @@ If a code was sent, recover the original submission without changing it.`,
   }
 
   // packages/plugin/src/client/workspaces.ts
-  var hostedServerUrl = "https://dsh.r2049.cn";
+  var hostedServerUrl = "https://dsh.r2049.cn", remoteWebDefaultBrowserNames = /* @__PURE__ */ new Set(["\u5F53\u524D\u6D4F\u89C8\u5668", "Current browser", "Navegador actual", "\u73FE\u5728\u306E\u30D6\u30E9\u30A6\u30B6\u30FC", "\u73FE\u5728\u306E\u30D6\u30E9\u30A6\u30B6", "\u0422\u0435\u043A\u0443\u0449\u0438\u0439 \u0431\u0440\u0430\u0443\u0437\u0435\u0440"]);
   function createRemoteWorkspaceAction(React, portal) {
     let ServerNotice = createServerNotice(React), HostPairingPanel = createHostPairingPanel(React), RemoteProgressView = createRemoteProgressView(React);
     function useFooterLane(wide) {
@@ -5835,7 +5839,10 @@ If a code was sent, recover the original submission without changing it.`,
         selectedHost.harnessVersion === void 0 ? void 0 : t("harnessVersion", { version: selectedHost.harnessVersion }),
         selectedHost.clientVersion === void 0 ? void 0 : t("pluginVersion", { version: selectedHost.clientVersion }),
         deviceUpdateAvailable(selectedHost) ? t("updateAvailableTag") : void 0
-      ].filter(Boolean).join(" \xB7 "), connectedClients = status?.host?.connectedClients ?? [], connectedCount = connectedClients.length, connectedCountLabel = t("connectedClientCount", { count: connectedCount }), connectedMenu = !needsAuthorization && status?.hostAuthorizationAvailable === !0 ? React.createElement(
+      ].filter(Boolean).join(" \xB7 "), connectedClients = status?.host?.connectedClients ?? [], clientDisplayName = (client) => {
+        let name = client.name.trim();
+        return name === "" ? t("unknownDevice") : client.platform === "web" && remoteWebDefaultBrowserNames.has(name) ? t("webBrowserDevice") : client.name;
+      }, connectedCount = connectedClients.length, connectedCountLabel = t("connectedClientCount", { count: connectedCount }), connectedMenu = !needsAuthorization && status?.hostAuthorizationAvailable === !0 ? React.createElement(
         "div",
         {
           className: `dshRemoteConnectedMenu${devicesOpen ? " isOpen" : ""}`
@@ -5886,7 +5893,7 @@ If a code was sent, recover the original submission without changing it.`,
                 React.createElement(
                   "span",
                   { className: "dshRemoteHostNameLine" },
-                  React.createElement("strong", null, client.name.trim() === "" ? t("unknownDevice") : client.name),
+                  React.createElement("strong", null, clientDisplayName(client)),
                   null
                 ),
                 React.createElement("small", null, [
